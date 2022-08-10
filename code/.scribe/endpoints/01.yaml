@@ -1,0 +1,449 @@
+name: Customers
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - DELETE
+    uri: api/customers/destroy_many
+    metadata:
+      title: 'Remove the specified resources from storage.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      ids:
+        name: ids
+        description: ''
+        required: true
+        example:
+          - 5
+        type: 'integer[]'
+        custom: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/customers
+    metadata:
+      title: 'Display a listing of the resource. Paginated.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      query:
+        name: query
+        description: 'Must be at least 2 characters. Must not be greater than 64 characters.'
+        required: false
+        example: pkwiobeszyobptqpciwxdxedxygqzupaojfxvijqpolajiupuabxaoxpxrp
+        type: string
+        custom: []
+      per_page:
+        name: per_page
+        description: ''
+        required: false
+        example: 13
+        type: integer
+        custom: []
+      sort_by:
+        name: sort_by
+        description: 'Must not be greater than 64 characters.'
+        required: false
+        example: ihdyhyxzgpilolucovfqwgklqyrvqnttdshljxihzdajaydgqdiizhkpgnd
+        type: string
+        custom: []
+      order_by:
+        name: order_by
+        description: 'Must be one of <code>asc</code> or <code>desc</code>.'
+        required: false
+        example: desc
+        type: string
+        custom: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/customers
+    metadata:
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+        required: true
+        example: wcqrmndcvqedrsdqxlpwnlhdnzuiswgqdusnyqtqkupvrzrpumltgwrssfedtvfuzdaxcpfugtvhrijxhywznqtnvgknlldeviavnbsmgqtrwebkhpbdkxugehlqmnthtjikemfxhenvgknqsmfojvvuqievxxoxls
+        type: string
+        custom: []
+      builder:
+        name: builder
+        description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+        required: false
+        example: nloqgscssbnojrfghedpusiychffcebygqsuyhhuwmoeummouejlqmuyadusypfwxbhqeyhttdywhadcoqedmvpgllexqetxicexsckaedfqyqlhbwcbkfcbpbkifpcftqaxntywgkctlscgjxwftxbosrwblndwtggmdvsxxesglsvqrwgvxvjyighugygfbnbighafbytwslqfokrhxlrxvooilprrqxljemsdebimowfolfyrypijhhcnx
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address. Must be at least 8 characters. Must not be greater than 255 characters.'
+        required: true
+        example: cuwzmcyrdjkdsphvkpqxvhconqmdyhzhlgyuiputciahkymbfisjxkgjvsbacdtixwyhfnwwjmfxqdqdkpqturvqqjnbgyleqjccbtapgriwxbeatwiaworjhrsauwdxwxeftqevaouisbjesbhndafjufpdlgggao
+        type: string
+        custom: []
+      phone:
+        name: phone
+        description: 'Must be at least 6 characters. Must not be greater than 255 characters.'
+        required: true
+        example: gzoubqphuqhoikmkxlmynzdnzameixknsjasbaddzvnlzdhdqfqhtvqasmmvyvpqtyfrfhlkyjzwnfmqdypkbmyvjjqjgjktltehsxgmslzxyyvhwrxsmheltlswrwjjqwhcqzsioonqnfomfflplagwamauvbesvskmfrgkujeyqknigduycrabvynbzdslwtfwtnsgliwupsnonehtcbksvqpbwurztamldsntujeoiv
+        type: string
+        custom: []
+      adress:
+        name: adress
+        description: 'Must be at least 6 characters. Must not be greater than 255 characters.'
+        required: true
+        example: sgyujsjo
+        type: string
+        custom: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/customers/{id}'
+    metadata:
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the customer.'
+        required: true
+        example: 5
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/customers/{id}'
+    metadata:
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the customer.'
+        required: true
+        example: 5
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+        required: true
+        example: xvmvxmboiybvdxwzvplopkpkkxsngqkwloucoyzhwceddnmfctulywtaygdkrtsbsoqisafnqqqytmbpshqbevmlikkqmnbltndjbchuzgxvyvbqrueznqjrlsqolkaqvyw
+        type: string
+        custom: []
+      builder:
+        name: builder
+        description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+        required: false
+        example: sddztabgprgrvcblpcfzaquljxwukgyspvphgwlbnvdaijgrtldxpumeddxsehpogvpgskfgslljbwnacoogfmnqzwtnmjnksrbbunisbzagugwnyvgvubsiingdg
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address. Must be at least 8 characters. Must not be greater than 255 characters.'
+        required: true
+        example: nanvzzskoonauo
+        type: string
+        custom: []
+      phone:
+        name: phone
+        description: 'Must be at least 6 characters. Must not be greater than 255 characters.'
+        required: true
+        example: bvftnpoupuivrzhemsgpqzhzcpfqykzpjvnuhrjngecmplueageqjyorlrysdpmdlwrenmssqlvcctqkdlfczdmavgqvmylfvfwu
+        type: string
+        custom: []
+      adress:
+        name: adress
+        description: 'Must be at least 6 characters. Must not be greater than 255 characters.'
+        required: true
+        example: ahgfsmrgckounhsryezbsshuaqdrbmbojatzyxtfzyqitwmrrcuygrxvaryuxcjajdrjprsfqbmxzszlndahsrdvkzraljbd
+        type: string
+        custom: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/customers/{id}'
+    metadata:
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the customer.'
+        required: true
+        example: 5
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/customers/{id}/notes'
+    metadata:
+      title: 'Show all customer notes'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the customer.'
+        required: true
+        example: 5
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/customers/{id}/notes'
+    metadata:
+      title: 'Add new notes to customer'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the customer.'
+        required: true
+        example: 5
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      content:
+        name: content
+        description: ''
+        required: true
+        example: quia
+        type: string
+        custom: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/customers/{id}/jobs'
+    metadata:
+      title: 'Show all customer jobs'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the customer.'
+        required: true
+        example: 5
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      status:
+        name: status
+        description: 'Must be one of <code>Backlog</code>, <code>Completed</code>, <code>In Progress</code>, or <code>Invoiced</code>.'
+        required: false
+        example: Completed
+        type: string
+        custom: []
+      customer_id:
+        name: customer_id
+        description: ''
+        required: false
+        example: 20
+        type: integer
+        custom: []
+      user_id:
+        name: user_id
+        description: ''
+        required: false
+        example: 10
+        type: integer
+        custom: []
+      per_page:
+        name: per_page
+        description: ''
+        required: false
+        example: 13
+        type: integer
+        custom: []
+      sort_by:
+        name: sort_by
+        description: 'Must not be greater than 64 characters.'
+        required: false
+        example: yrkivpeoetcwvvzjaqvgfphrhmflvxivgvfvtffwxpnacgwoxsamqcqn
+        type: string
+        custom: []
+      expected_installation_date_start:
+        name: expected_installation_date_start
+        description: 'Must be a valid date.'
+        required: false
+        example: '2022-08-09T13:08:04'
+        type: string
+        custom: []
+      expected_installation_date_end:
+        name: expected_installation_date_end
+        description: 'Must be a valid date.'
+        required: false
+        example: '2022-08-09T13:08:04'
+        type: string
+        custom: []
+      order_by:
+        name: order_by
+        description: 'Must be one of <code>asc</code> or <code>desc</code>.'
+        required: false
+        example: asc
+        type: string
+        custom: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []

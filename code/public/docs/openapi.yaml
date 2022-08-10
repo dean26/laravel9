@@ -1,0 +1,3701 @@
+openapi: 3.0.3
+info:
+  title: 'GetBuilt Api documentation'
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'https://getbuilt.cc-staging.io'
+paths:
+  /api/guides/destroy_many:
+    delete:
+      summary: 'Remove the specified resources from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Guides
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  description: ''
+                  example:
+                    - 14
+                  items:
+                    type: integer
+              required:
+                - ids
+  '/api/guides/{id}':
+    delete:
+      summary: 'Remove the specified guide from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Guides
+    put:
+      summary: 'Update guide'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Guides
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: string
+                  description: 'Must be a valid JSON string.'
+                  example: '["quam","dicta"]'
+                name:
+                  type: string
+                  description: ''
+                  example: magnam
+                type:
+                  type: string
+                  description: ''
+                  example: atque
+              required:
+                - name
+                - type
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the guide.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  /api/auth/login:
+    post:
+      summary: 'Login method based on tokens'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The email must be a valid email address.'
+                  errors:
+                    email:
+                      - 'The email must be a valid email address.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The email must be a valid email address.'
+                  errors:
+                    type: object
+                    example:
+                      email:
+                        - 'The email must be a valid email address.'
+      tags:
+        - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must be at least 8 characters. Must not be greater than 255 characters.'
+                  example: fspxjugeiapdpszabilygdzwecrofejdfuoqmblgrxmmvohpqnwtvzwjzqampvsotlpsefbqkffqryrqzxwggdnahrdokkmpyxorlnmatgscmbicbww
+                password:
+                  type: string
+                  description: 'Must be at least 8 characters. Must not be greater than 255 characters.'
+                  example: tawdjxahgscgolmcglqpwxkurlogfoiwurgxyjwikmqfpnghgagdkwjwcmnu
+              required:
+                - email
+                - password
+      security: []
+  /api/login:
+    post:
+      summary: 'Login method based on spa cookie'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The email must be a valid email address.'
+                  errors:
+                    email:
+                      - 'The email must be a valid email address.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The email must be a valid email address.'
+                  errors:
+                    type: object
+                    example:
+                      email:
+                        - 'The email must be a valid email address.'
+      tags:
+        - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must be at least 8 characters. Must not be greater than 255 characters.'
+                  example: mrfswnxvrdcptkotcaatqjmspfthmtsgqwpsjxfhgmyzdzndohr
+                password:
+                  type: string
+                  description: 'Must be at least 8 characters. Must not be greater than 255 characters.'
+                  example: zqdtoamukaenbpkwlagwsrqxuxrecfegomtplkwatntefelqlkypplszlkiscimrirckkxpfezrrsnxdzmepsurvbgvdlssokaldtyosboxtmhvqdulivbrxttvmjhvtyf
+              required:
+                - email
+                - password
+      security: []
+  /api/logout:
+    post:
+      summary: 'Logout user based on cookie spa'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Auth
+  /api/auth/logout:
+    post:
+      summary: 'Logout user from current request'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Auth
+  /api/auth/logout-current:
+    post:
+      summary: 'Logout user from all devices based on tokens'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Auth
+  /api/customers/destroy_many:
+    delete:
+      summary: 'Remove the specified resources from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Customers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  description: ''
+                  example:
+                    - 5
+                  items:
+                    type: integer
+              required:
+                - ids
+  /api/customers:
+    get:
+      summary: 'Display a listing of the resource. Paginated.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Customers
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                  description: 'Must be at least 2 characters. Must not be greater than 64 characters.'
+                  example: pkwiobeszyobptqpciwxdxedxygqzupaojfxvijqpolajiupuabxaoxpxrp
+                per_page:
+                  type: integer
+                  description: ''
+                  example: 13
+                sort_by:
+                  type: string
+                  description: 'Must not be greater than 64 characters.'
+                  example: ihdyhyxzgpilolucovfqwgklqyrvqnttdshljxihzdajaydgqdiizhkpgnd
+                order_by:
+                  type: string
+                  description: 'Must be one of <code>asc</code> or <code>desc</code>.'
+                  example: desc
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Customers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+                  example: wcqrmndcvqedrsdqxlpwnlhdnzuiswgqdusnyqtqkupvrzrpumltgwrssfedtvfuzdaxcpfugtvhrijxhywznqtnvgknlldeviavnbsmgqtrwebkhpbdkxugehlqmnthtjikemfxhenvgknqsmfojvvuqievxxoxls
+                builder:
+                  type: string
+                  description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+                  example: nloqgscssbnojrfghedpusiychffcebygqsuyhhuwmoeummouejlqmuyadusypfwxbhqeyhttdywhadcoqedmvpgllexqetxicexsckaedfqyqlhbwcbkfcbpbkifpcftqaxntywgkctlscgjxwftxbosrwblndwtggmdvsxxesglsvqrwgvxvjyighugygfbnbighafbytwslqfokrhxlrxvooilprrqxljemsdebimowfolfyrypijhhcnx
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must be at least 8 characters. Must not be greater than 255 characters.'
+                  example: cuwzmcyrdjkdsphvkpqxvhconqmdyhzhlgyuiputciahkymbfisjxkgjvsbacdtixwyhfnwwjmfxqdqdkpqturvqqjnbgyleqjccbtapgriwxbeatwiaworjhrsauwdxwxeftqevaouisbjesbhndafjufpdlgggao
+                phone:
+                  type: string
+                  description: 'Must be at least 6 characters. Must not be greater than 255 characters.'
+                  example: gzoubqphuqhoikmkxlmynzdnzameixknsjasbaddzvnlzdhdqfqhtvqasmmvyvpqtyfrfhlkyjzwnfmqdypkbmyvjjqjgjktltehsxgmslzxyyvhwrxsmheltlswrwjjqwhcqzsioonqnfomfflplagwamauvbesvskmfrgkujeyqknigduycrabvynbzdslwtfwtnsgliwupsnonehtcbksvqpbwurztamldsntujeoiv
+                adress:
+                  type: string
+                  description: 'Must be at least 6 characters. Must not be greater than 255 characters.'
+                  example: sgyujsjo
+              required:
+                - name
+                - email
+                - phone
+                - adress
+  '/api/customers/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Customers
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Customers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+                  example: xvmvxmboiybvdxwzvplopkpkkxsngqkwloucoyzhwceddnmfctulywtaygdkrtsbsoqisafnqqqytmbpshqbevmlikkqmnbltndjbchuzgxvyvbqrueznqjrlsqolkaqvyw
+                builder:
+                  type: string
+                  description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+                  example: sddztabgprgrvcblpcfzaquljxwukgyspvphgwlbnvdaijgrtldxpumeddxsehpogvpgskfgslljbwnacoogfmnqzwtnmjnksrbbunisbzagugwnyvgvubsiingdg
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must be at least 8 characters. Must not be greater than 255 characters.'
+                  example: nanvzzskoonauo
+                phone:
+                  type: string
+                  description: 'Must be at least 6 characters. Must not be greater than 255 characters.'
+                  example: bvftnpoupuivrzhemsgpqzhzcpfqykzpjvnuhrjngecmplueageqjyorlrysdpmdlwrenmssqlvcctqkdlfczdmavgqvmylfvfwu
+                adress:
+                  type: string
+                  description: 'Must be at least 6 characters. Must not be greater than 255 characters.'
+                  example: ahgfsmrgckounhsryezbsshuaqdrbmbojatzyxtfzyqitwmrrcuygrxvaryuxcjajdrjprsfqbmxzszlndahsrdvkzraljbd
+              required:
+                - name
+                - email
+                - phone
+                - adress
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Customers
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the customer.'
+        example: 5
+        required: true
+        schema:
+          type: integer
+  '/api/customers/{id}/notes':
+    get:
+      summary: 'Show all customer notes'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Customers
+    post:
+      summary: 'Add new notes to customer'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Customers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: ''
+                  example: quia
+              required:
+                - content
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the customer.'
+        example: 5
+        required: true
+        schema:
+          type: integer
+  '/api/customers/{id}/jobs':
+    get:
+      summary: 'Show all customer jobs'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Customers
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  description: 'Must be one of <code>Backlog</code>, <code>Completed</code>, <code>In Progress</code>, or <code>Invoiced</code>.'
+                  example: Completed
+                customer_id:
+                  type: integer
+                  description: ''
+                  example: 20
+                user_id:
+                  type: integer
+                  description: ''
+                  example: 10
+                per_page:
+                  type: integer
+                  description: ''
+                  example: 13
+                sort_by:
+                  type: string
+                  description: 'Must not be greater than 64 characters.'
+                  example: yrkivpeoetcwvvzjaqvgfphrhmflvxivgvfvtffwxpnacgwoxsamqcqn
+                expected_installation_date_start:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2022-08-09T13:08:04'
+                expected_installation_date_end:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2022-08-09T13:08:04'
+                order_by:
+                  type: string
+                  description: 'Must be one of <code>asc</code> or <code>desc</code>.'
+                  example: asc
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the customer.'
+        example: 5
+        required: true
+        schema:
+          type: integer
+  /api/files/destroy_many:
+    delete:
+      summary: 'Remove the specified resources from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Files
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  description: ''
+                  example:
+                    - 19
+                  items:
+                    type: integer
+              required:
+                - ids
+  '/api/files/{id}':
+    delete:
+      summary: 'Remove the specified note from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Files
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the file.'
+        example: 18
+        required: true
+        schema:
+          type: integer
+  /api/flags/destroy_many:
+    delete:
+      summary: 'Remove the specified resources from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Flags
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  description: ''
+                  example:
+                    - 7
+                  items:
+                    type: integer
+              required:
+                - ids
+  '/api/flags/{id}':
+    delete:
+      summary: 'Remove the specified note from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Flags
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the flag.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/items/destroy_many:
+    delete:
+      summary: 'Remove the specified resources from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Items
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  description: ''
+                  example:
+                    - 11
+                  items:
+                    type: integer
+              required:
+                - ids
+  /api/items:
+    get:
+      summary: 'Display a listing of the resource. Paginated.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Items
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                per_page:
+                  type: integer
+                  description: ''
+                  example: 19
+                sort_by:
+                  type: string
+                  description: 'Must not be greater than 64 characters.'
+                  example: kktmrgokxjtdjguaqifacgrgakjxmfymwupaxagctdbgbcbntbsgd
+                order_by:
+                  type: string
+                  description: 'Must be one of <code>asc</code> or <code>desc</code>.'
+                  example: desc
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Items
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+                  example: nouacrriyskmfsvteycnpvfekmblpuadwtonrbnpisoeqwpcfjakdshfhzzeququkgyaamanhtuspbjtysotxbaqrhgjurluymhezxgzbbdkeqxsvaolwjbeeoulvogwpdookpcixjddbhbeyzij
+              required:
+                - name
+  '/api/items/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Items
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Items
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+                  example: jrlnzxrzuzqlkahcsthaefvdzrgyflzuaxoqeppprbc
+              required:
+                - name
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Items
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the item.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/jobs/destroy_many:
+    delete:
+      summary: 'Remove the specified resources from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  description: ''
+                  example:
+                    - 19
+                  items:
+                    type: integer
+              required:
+                - ids
+  '/api/jobs/{id}/notes':
+    get:
+      summary: 'Show all job notes'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Jobs
+    post:
+      summary: 'Add new note to job'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: ''
+                  example: possimus
+              required:
+                - content
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the job.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/jobs:
+    get:
+      summary: 'Display a listing of the resource. Paginated.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Jobs
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  description: 'Must be one of <code>Backlog</code>, <code>Completed</code>, <code>In Progress</code>, or <code>Invoiced</code>.'
+                  example: 'In Progress'
+                customer_id:
+                  type: integer
+                  description: ''
+                  example: 20
+                user_id:
+                  type: integer
+                  description: ''
+                  example: 17
+                per_page:
+                  type: integer
+                  description: ''
+                  example: 18
+                sort_by:
+                  type: string
+                  description: 'Must not be greater than 64 characters.'
+                  example: wflzurshsfalzlmjhdroywqqrwfgcfcxky
+                expected_installation_date_start:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2022-08-09T13:08:05'
+                expected_installation_date_end:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2022-08-09T13:08:05'
+                order_by:
+                  type: string
+                  description: 'Must be one of <code>asc</code> or <code>desc</code>.'
+                  example: asc
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: ''
+                  example: 15
+                item_id:
+                  type: integer
+                  description: ''
+                  example: 7
+                customer_id:
+                  type: integer
+                  description: ''
+                  example: 2
+                start_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2022-08-09T13:08:05'
+                end_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2022-08-09T13:08:05'
+                expected_installation_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2022-08-09T13:08:05'
+              required:
+                - user_id
+                - item_id
+                - customer_id
+                - start_date
+  '/api/jobs/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Jobs
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: ''
+                  example: 18
+                item_id:
+                  type: integer
+                  description: ''
+                  example: 19
+                customer_id:
+                  type: integer
+                  description: ''
+                  example: 5
+                start_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2022-08-09T13:08:05'
+                end_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2022-08-09T13:08:05'
+                expected_installation_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2022-08-09T13:08:05'
+              required:
+                - user_id
+                - item_id
+                - customer_id
+                - start_date
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Jobs
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the job.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/jobs/{id}/files':
+    get:
+      summary: 'Show all job files'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Jobs
+    post:
+      summary: 'Add new file to job'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: multipart/form-data
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Jobs
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: 'Must be a file. Must be an image. Must not be greater than 20000 kilobytes.'
+              required:
+                - file
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the job.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/jobs/{id}/status':
+    post:
+      summary: 'Update job status'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Jobs
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  description: 'Must be one of <code>Backlog</code>, <code>Completed</code>, <code>In Progress</code>, or <code>Invoiced</code>.'
+                  example: Invoiced
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the job.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/jobs/{id}/tasks':
+    get:
+      summary: 'Show all job tasks'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Jobs
+    post:
+      summary: 'Add new task to job'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: ''
+                  example: totam
+                user_id:
+                  type: integer
+                  description: ''
+                  example: 9
+                deadline:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2022-08-09T13:08:05'
+                completed:
+                  type: boolean
+                  description: ''
+                  example: false
+              required:
+                - content
+                - user_id
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the job.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/jobs/{id}/flags':
+    post:
+      summary: 'Add new flag to job'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: 'Must be one of <code>On hold</code>, <code>Blocked</code>, <code>Problems</code>, <code>Incomplete details</code>, <code>Overdue</code>, <code>Incomplete build</code>, <code>Quality issue</code>, <code>Incorrect build</code>, <code>Missing details</code>, <code>Need details</code>, or <code>Need materials</code>.'
+                  example: Blocked
+              required:
+                - content
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the job.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/jobs/{id}/guides':
+    get:
+      summary: 'Show all job guides'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Jobs
+    post:
+      summary: 'Add new guide to job'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: string
+                  description: 'Must be a valid JSON string.'
+                  example: '["deserunt","est"]'
+                name:
+                  type: string
+                  description: ''
+                  example: aut
+                type:
+                  type: string
+                  description: ''
+                  example: ex
+              required:
+                - name
+                - type
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the job.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/notes/destroy_many:
+    delete:
+      summary: 'Remove the specified resources from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Note
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  description: ''
+                  example:
+                    - 15
+                  items:
+                    type: integer
+              required:
+                - ids
+  '/api/notes/{id}':
+    delete:
+      summary: 'Remove the specified note from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Note
+    put:
+      summary: 'Update note'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Note
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: ''
+                  example: iure
+              required:
+                - content
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the note.'
+        example: 3
+        required: true
+        schema:
+          type: integer
+  /api/auth/forgot-password:
+    post:
+      summary: 'Send password reset link'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: error
+                  message: 'Email error'
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  message:
+                    type: string
+                    example: 'Email error'
+      tags:
+        - PasswordReset
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: ccummings@example.org
+              required:
+                - email
+      security: []
+  /api/auth/reset-password:
+    post:
+      summary: 'Reset user password'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The password must be at least 8 characters. (and 1 more error)'
+                  errors:
+                    password:
+                      - 'The password must be at least 8 characters.'
+                      - 'The password confirmation does not match.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The password must be at least 8 characters. (and 1 more error)'
+                  errors:
+                    type: object
+                    example:
+                      password:
+                        - 'The password must be at least 8 characters.'
+                        - 'The password confirmation does not match.'
+      tags:
+        - PasswordReset
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  description: 'Must not be greater than 256 characters.'
+                  example: gunnpmjbkmhqcbjtrpzhmlqmlbhktjzpurftsdelaatvykyzcdobsnqzufufulceejkdbjpqonirnwnvmbmpnifctsyteafhznaxdgfoctjfe
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: hazle.mueller@example.com
+                password:
+                  type: string
+                  description: 'Must be at least 8 characters.'
+                  example: fjxyfzy
+              required:
+                - token
+                - email
+                - password
+      security: []
+  /api/search:
+    get:
+      summary: 'Global search for users and customers.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Search
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                  description: 'Must be at least 2 characters. Must not be greater than 64 characters.'
+                  example: vjfyojtvrr
+              required:
+                - query
+      security: []
+  /api/tasks/destroy_many:
+    delete:
+      summary: 'Remove the specified resources from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Tasks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  description: ''
+                  example:
+                    - 5
+                  items:
+                    type: integer
+              required:
+                - ids
+  '/api/tasks/{id}':
+    delete:
+      summary: 'Remove the specified tasks from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Tasks
+    get:
+      summary: 'Show task details'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Tasks
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the task.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  '/api/tasks/{id}/status':
+    post:
+      summary: 'Update task status'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Tasks
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                completed:
+                  type: boolean
+                  description: ''
+                  example: true
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the task.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  '/api/tasks/{id}/flags':
+    post:
+      summary: 'Add new flag to task'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Tasks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: 'Must be one of <code>On hold</code>, <code>Blocked</code>, <code>Problems</code>, <code>Incomplete details</code>, <code>Overdue</code>, <code>Incomplete build</code>, <code>Quality issue</code>, <code>Incorrect build</code>, <code>Missing details</code>, <code>Need details</code>, or <code>Need materials</code>.'
+                  example: Overdue
+              required:
+                - content
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the task.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  /api/auth/password:
+    put:
+      summary: 'Change password for logged user'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  description: ''
+                  example: consectetur
+                password_confirmed:
+                  type: string
+                  description: ''
+                  example: atque
+              required:
+                - password
+                - password_confirmed
+  '/api/users/{id}/password':
+    put:
+      summary: 'Password change action, for "directors" only'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  description: 'Must be at least 8 characters.'
+                  example: jngj
+              required:
+                - password
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/auth/profile:
+    get:
+      summary: 'Show information about logged user'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Users
+  /api/users/destroy_many:
+    delete:
+      summary: 'Remove the specified resources from storage, only for "directors"'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  description: ''
+                  example:
+                    - 20
+                  items:
+                    type: integer
+              required:
+                - ids
+  '/api/users/{id}/notes':
+    get:
+      summary: 'Show all users notes'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Users
+    post:
+      summary: 'Add new notes to user'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: ''
+                  example: sunt
+              required:
+                - content
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/users:
+    get:
+      summary: 'Show all users, only for "directors". Paginated.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Users
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                  description: 'Must be at least 2 characters. Must not be greater than 64 characters.'
+                  example: ngpzsgjmmkhsgtmqhbgolumigjrrfzpivdewp
+                per_page:
+                  type: integer
+                  description: ''
+                  example: 11
+                sort_by:
+                  type: string
+                  description: 'Must not be greater than 64 characters.'
+                  example: adnejmlwvhegwiyomionatvfnsyczogqozjbpbzoibfjgljab
+                order_by:
+                  type: string
+                  description: 'Must be one of <code>asc</code> or <code>desc</code>.'
+                  example: desc
+    post:
+      summary: "Store new user, only for \"directors\"\nPossible values for roles [Director, Installer, Warehouse]"
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+                  example: vekkwiciyqlaoaapciadqzkzmgxxpfzjgkphcqavdxqfpixjifuyfonjghojlenuzbcirxofvgvntyvbwevvelxaqpjmzkolacwogdttsddmpvvhsulyanihmuisnlyspqfzfcduslilotkotjcebtgvbcnlvtvzqajrolesozwmyjnlpvwzpsygu
+                phone:
+                  type: string
+                  description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+                  example: xaedqohkdhdpqppyhsgjrfgnggmjrrclbvhdbkwdsrphubujldgsnlemvslplxercajniojzssvkeqwfceffhpbkjjvhbiqnazsawqqjqlupuuwvpdpdlrmehmbiyttqabdccpzbgqszawkggabzgxsclqqcumuxlbircitbjyejusqogyetzb
+                address:
+                  type: string
+                  description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+                  example: acjkrbczccpqvnogkntwhnongmmpucvpzlfhtfyohewqhvpwowyhjaswrboyxgdryvhfvymq
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must be at least 8 characters. Must not be greater than 255 characters.'
+                  example: qlwmtstypzkxgztgjjavcem
+                password:
+                  type: string
+                  description: 'Must be at least 8 characters.'
+                  example: byqvtybp
+                role:
+                  type: string
+                  description: 'Must be one of <code>Director</code>, <code>Installer</code>, or <code>Warehouse</code>.'
+                  example: Warehouse
+              required:
+                - name
+                - email
+                - password
+  '/api/users/{id}':
+    get:
+      summary: 'Show specific user data, for "directors" and for authenticated user'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Users
+    put:
+      summary: 'Update user, for "directors" and for authenticated user'
+      description: 'Only director can update user roles'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+                  example: ffzemosjhaozqlkhritffkpjhkalbtxtprinzlcunvjz
+                phone:
+                  type: string
+                  description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+                  example: reqmwlprzukwsotrrhlowxeduhmjfvlqljdqddxmeatmnppilz
+                address:
+                  type: string
+                  description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+                  example: lxpsmftmiurfbrfjcsfpkvsoiqymctguzrgyfjewbsnquzorhhyjwnmnwgqefsfwjimvwzrpmpxtjpqvlrynyjgbquiyxhkccczhkjrwmfxpyyklnxrxijoibgmhkvspbvepohydhyodgvxznsaejluycdjymbubszunaxlpknqirjsfksurvibeqrogewiywsduighhfrwefsuwwucqhodjgywuemahspyct
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must be at least 8 characters. Must not be greater than 255 characters.'
+                  example: ucobytalrklydeujubgzqlragbxngofvrvfydurlzajgqfwmaomwzdhkmuzzuxeidzdrulzajoxzwjmjnrdmvzxavwivowdllsvdlzaqenlwqirddaaovbfsbypmggtllpcvlondgqxgovnwzkyyaiezefctvlollaropgdjoqjxwbaubgybwlraqiwrfmqwtoagkgrkgsyqrwlmubmmlsuupqjaowinnooilvggvazffq
+                role:
+                  type: string
+                  description: 'Must be one of <code>Director</code>, <code>Installer</code>, or <code>Warehouse</code>.'
+                  example: Director
+              required:
+                - name
+                - email
+    delete:
+      summary: 'Destroy user, only for "directors"'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Users
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Guides
+    description: ''
+  -
+    name: Auth
+    description: ''
+  -
+    name: Customers
+    description: ''
+  -
+    name: Files
+    description: ''
+  -
+    name: Flags
+    description: ''
+  -
+    name: Items
+    description: ''
+  -
+    name: Jobs
+    description: ''
+  -
+    name: Note
+    description: ''
+  -
+    name: PasswordReset
+    description: ''
+  -
+    name: Search
+    description: ''
+  -
+    name: Tasks
+    description: ''
+  -
+    name: Users
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: ''
+security:
+  -
+    default: []

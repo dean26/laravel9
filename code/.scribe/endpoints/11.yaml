@@ -1,0 +1,475 @@
+name: Users
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - PUT
+    uri: api/auth/password
+    metadata:
+      title: 'Change password for logged user'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      password:
+        name: password
+        description: ''
+        required: true
+        example: consectetur
+        type: string
+        custom: []
+      password_confirmed:
+        name: password_confirmed
+        description: ''
+        required: true
+        example: atque
+        type: string
+        custom: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/users/{id}/password'
+    metadata:
+      title: 'Password change action, for "directors" only'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      password:
+        name: password
+        description: 'Must be at least 8 characters.'
+        required: true
+        example: jngj
+        type: string
+        custom: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/auth/profile
+    metadata:
+      title: 'Show information about logged user'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: api/users/destroy_many
+    metadata:
+      title: 'Remove the specified resources from storage, only for "directors"'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      ids:
+        name: ids
+        description: ''
+        required: true
+        example:
+          - 20
+        type: 'integer[]'
+        custom: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/users/{id}/notes'
+    metadata:
+      title: 'Show all users notes'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/users/{id}/notes'
+    metadata:
+      title: 'Add new notes to user'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      content:
+        name: content
+        description: ''
+        required: true
+        example: sunt
+        type: string
+        custom: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/users
+    metadata:
+      title: 'Show all users, only for "directors". Paginated.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      query:
+        name: query
+        description: 'Must be at least 2 characters. Must not be greater than 64 characters.'
+        required: false
+        example: ngpzsgjmmkhsgtmqhbgolumigjrrfzpivdewp
+        type: string
+        custom: []
+      per_page:
+        name: per_page
+        description: ''
+        required: false
+        example: 11
+        type: integer
+        custom: []
+      sort_by:
+        name: sort_by
+        description: 'Must not be greater than 64 characters.'
+        required: false
+        example: adnejmlwvhegwiyomionatvfnsyczogqozjbpbzoibfjgljab
+        type: string
+        custom: []
+      order_by:
+        name: order_by
+        description: 'Must be one of <code>asc</code> or <code>desc</code>.'
+        required: false
+        example: desc
+        type: string
+        custom: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/users
+    metadata:
+      title: |-
+        Store new user, only for "directors"
+        Possible values for roles [Director, Installer, Warehouse]
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+        required: true
+        example: vekkwiciyqlaoaapciadqzkzmgxxpfzjgkphcqavdxqfpixjifuyfonjghojlenuzbcirxofvgvntyvbwevvelxaqpjmzkolacwogdttsddmpvvhsulyanihmuisnlyspqfzfcduslilotkotjcebtgvbcnlvtvzqajrolesozwmyjnlpvwzpsygu
+        type: string
+        custom: []
+      phone:
+        name: phone
+        description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+        required: false
+        example: xaedqohkdhdpqppyhsgjrfgnggmjrrclbvhdbkwdsrphubujldgsnlemvslplxercajniojzssvkeqwfceffhpbkjjvhbiqnazsawqqjqlupuuwvpdpdlrmehmbiyttqabdccpzbgqszawkggabzgxsclqqcumuxlbircitbjyejusqogyetzb
+        type: string
+        custom: []
+      address:
+        name: address
+        description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+        required: false
+        example: acjkrbczccpqvnogkntwhnongmmpucvpzlfhtfyohewqhvpwowyhjaswrboyxgdryvhfvymq
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address. Must be at least 8 characters. Must not be greater than 255 characters.'
+        required: true
+        example: qlwmtstypzkxgztgjjavcem
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'Must be at least 8 characters.'
+        required: true
+        example: byqvtybp
+        type: string
+        custom: []
+      role:
+        name: role
+        description: 'Must be one of <code>Director</code>, <code>Installer</code>, or <code>Warehouse</code>.'
+        required: false
+        example: Warehouse
+        type: string
+        custom: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/users/{id}'
+    metadata:
+      title: 'Show specific user data, for "directors" and for authenticated user'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/users/{id}'
+    metadata:
+      title: 'Update user, for "directors" and for authenticated user'
+      description: 'Only director can update user roles'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+        required: true
+        example: ffzemosjhaozqlkhritffkpjhkalbtxtprinzlcunvjz
+        type: string
+        custom: []
+      phone:
+        name: phone
+        description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+        required: false
+        example: reqmwlprzukwsotrrhlowxeduhmjfvlqljdqddxmeatmnppilz
+        type: string
+        custom: []
+      address:
+        name: address
+        description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+        required: false
+        example: lxpsmftmiurfbrfjcsfpkvsoiqymctguzrgyfjewbsnquzorhhyjwnmnwgqefsfwjimvwzrpmpxtjpqvlrynyjgbquiyxhkccczhkjrwmfxpyyklnxrxijoibgmhkvspbvepohydhyodgvxznsaejluycdjymbubszunaxlpknqirjsfksurvibeqrogewiywsduighhfrwefsuwwucqhodjgywuemahspyct
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address. Must be at least 8 characters. Must not be greater than 255 characters.'
+        required: true
+        example: ucobytalrklydeujubgzqlragbxngofvrvfydurlzajgqfwmaomwzdhkmuzzuxeidzdrulzajoxzwjmjnrdmvzxavwivowdllsvdlzaqenlwqirddaaovbfsbypmggtllpcvlondgqxgovnwzkyyaiezefctvlollaropgdjoqjxwbaubgybwlraqiwrfmqwtoagkgrkgsyqrwlmubmmlsuupqjaowinnooilvggvazffq
+        type: string
+        custom: []
+      role:
+        name: role
+        description: 'Must be one of <code>Director</code>, <code>Installer</code>, or <code>Warehouse</code>.'
+        required: false
+        example: Director
+        type: string
+        custom: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/users/{id}'
+    metadata:
+      title: 'Destroy user, only for "directors"'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
